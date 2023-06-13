@@ -56,4 +56,32 @@ class SalesOpportunitiesController extends Controller
             Log::error('Erro ao cadastrar nova oportunidade: ' . $e->getMessage());
         }
     }
+
+    public function approve(int $saleOpportunityId)
+    {
+        try {
+            DB::beginTransaction();
+            $this->service->changeSaleOpportunityStatus($saleOpportunityId, 'approved');
+            DB::commit();
+
+            return redirect()->route('sale_opportunity.index')->with('status', 'sale-opportunity-approved');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Erro ao aprovar oportunidade: ' . $e->getMessage());
+        }
+    }
+
+    public function refuse(int $saleOpportunityId)
+    {
+        try {
+            DB::beginTransaction();
+            $this->service->changeSaleOpportunityStatus($saleOpportunityId, 'refused');
+            DB::commit();
+
+            return redirect()->route('sale_opportunity.index')->with('status', 'sale-opportunity-refused');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Erro ao recusar oportunidade: ' . $e->getMessage());
+        }
+    }
 }

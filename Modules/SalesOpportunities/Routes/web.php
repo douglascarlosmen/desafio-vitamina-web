@@ -7,4 +7,6 @@ Route::prefix('oportunidades')->name('sale_opportunity.')->middleware('auth')->g
     Route::get('/', [SalesOpportunitiesController::class, 'index'])->name('index');
     Route::get('/nova', [SalesOpportunitiesController::class, 'create'])->name('create');
     Route::post('/nova', [SalesOpportunitiesController::class, 'store'])->name('store');
+    Route::get('/aprovar/{saleOpportunityId}', [SalesOpportunitiesController::class, 'approve'])->name('approve');
+    Route::get('/recusar/{saleOpportunityId}', [SalesOpportunitiesController::class, 'refuse'])->name('refuse');
 });

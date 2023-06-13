@@ -11,5 +11,24 @@ class SaleOpportunity extends Model
 
     protected $table = 'sales_opportunities';
 
-    protected $fillable = ['title'];
+    protected $fillable = ['title', 'status'];
+
+    /**
+     * Accessors
+     */
+    public function getFormattedStatusAttribute()
+    {
+        switch ($this->status) {
+            case 'approved':
+                $status = 'Aprovado';
+                break;
+            case 'refused':
+                $status = 'Reprovado';
+                break;
+            default:
+                $status = 'Em andamento';
+        }
+
+        return $status;
+    }
 }

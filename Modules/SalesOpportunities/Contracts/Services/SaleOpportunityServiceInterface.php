@@ -17,4 +17,10 @@ interface SaleOpportunityServiceInterface
      * @return Collection
      */
     public function getAllSalesOpportunities(): Collection;
+
+    /**
+     * @param string $newStatus
+     * @return void
+     */
+    public function changeSaleOpportunityStatus(int $saleOpportunityId, string $newStatus): void;
 }

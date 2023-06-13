@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sales_opportunities', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

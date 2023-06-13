@@ -22,12 +22,20 @@
             <tr>
                 <th>#</th>
                 <th>Título</th>
+                <th>Status</th>
+                <th>Ações</th>
             </tr>
 
             @foreach ($salesOpportunities as $saleOpportunity)
                 <tr>
                     <td>{{$saleOpportunity->id}}</td>
                     <td>{{$saleOpportunity->title}}</td>
+                    <td>{{$saleOpportunity->formatted_status}}</td>
+                    <td>
+                        <a href="{{route('sale_opportunity.approve', ['saleOpportunityId' => $saleOpportunity->id])}}">Aprovar</a>
+                        |
+                        <a href="{{route('sale_opportunity.refuse', ['saleOpportunityId' => $saleOpportunity->id])}}">Reprovar</a>
+                    </td>
                 </tr>
             @endforeach
         </table>

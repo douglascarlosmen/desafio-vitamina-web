@@ -24,4 +24,15 @@ class SaleOpportunityRepository implements SaleOpportunityRepositoryInterface
     {
         return $this->model->all();
     }
+
+    public function update(int $id, array $data): void
+    {
+        $saleOpportunity = $this->getById($id);
+        $saleOpportunity->update($data);
+    }
+
+    public function getById(int $id): SaleOpportunity
+    {
+        return $this->model->find($id);
+    }
 }

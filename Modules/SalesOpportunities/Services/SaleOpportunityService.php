@@ -25,4 +25,9 @@ class SaleOpportunityService implements SaleOpportunityServiceInterface
     {
         return $this->repository->getAll();
     }
+
+    public function changeSaleOpportunityStatus(int $saleOpportunityId, string $newStatus): void
+    {
+        $this->repository->update($saleOpportunityId, ['status' => $newStatus]);
+    }
 }

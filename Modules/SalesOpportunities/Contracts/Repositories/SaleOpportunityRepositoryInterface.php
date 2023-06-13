@@ -17,4 +17,16 @@ interface SaleOpportunityRepositoryInterface
      * @return Collection
      */
     public function getAll(): Collection;
+
+    /**
+     * @param array $data
+     * @return void
+     */
+    public function update(int $id, array $data): void;
+
+    /**
+     * @param integer $id
+     * @return SaleOpportunity
+     */
+    public function getById(int $id): SaleOpportunity;
 }
