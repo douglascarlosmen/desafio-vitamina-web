@@ -1,0 +1,11 @@
+{
+    "name": "SalesOpportunities",
+    "alias": "salesopportunities",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SalesOpportunities\\Providers\\SalesOpportunitiesServiceProvider"
+    ],
+    "files": []
+}

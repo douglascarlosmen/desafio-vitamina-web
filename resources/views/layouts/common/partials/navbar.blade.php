@@ -11,6 +11,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profile.edit') }}">Perfil</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('sale_opportunity.index') }}">Oportunidades</a>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
