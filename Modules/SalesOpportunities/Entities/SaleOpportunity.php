@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Clients\Entities\Client;
 use Modules\Products\Entities\Product;
+use Modules\Sellers\Entities\Seller;
 
 class SaleOpportunity extends Model
 {
@@ -17,7 +18,8 @@ class SaleOpportunity extends Model
         'title',
         'status',
         'client_id',
-        'product_id'
+        'product_id',
+        'seller_id'
     ];
 
     /**
@@ -31,6 +33,11 @@ class SaleOpportunity extends Model
     public function product()
     {
         return $this->belongsTo(Product::class, 'product_id');
+    }
+
+    public function seller()
+    {
+        return $this->belongsTo(Seller::class, 'seller_id');
     }
 
     /**

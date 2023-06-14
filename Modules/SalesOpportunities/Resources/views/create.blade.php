@@ -24,7 +24,7 @@
 
             <div class="mb-3">
                 <label for="client" class="form-label">Cliente</label>
-                <input type="text" name="client" class="form-control awesomplete" id="client" value=""
+                <input type="text" name="client" class="form-control" id="client" value=""
                     required>
                 @if ($errors->get('client'))
                     @include('components.common.input-errors', [
@@ -35,11 +35,22 @@
 
             <div class="mb-3">
                 <label for="product" class="form-label">Produto</label>
-                <input type="text" name="product" class="form-control awesomplete" id="product" value=""
+                <input type="text" name="product" class="form-control" id="product" value=""
                     required>
                 @if ($errors->get('product'))
                     @include('components.common.input-errors', [
                         'errors' => $errors->get('product'),
+                    ])
+                @endif
+            </div>
+
+            <div class="mb-3">
+                <label for="seller" class="form-label">Vendedor</label>
+                <input type="text" name="seller" class="form-control" id="seller" value=""
+                    required>
+                @if ($errors->get('seller'))
+                    @include('components.common.input-errors', [
+                        'errors' => $errors->get('seller'),
                     ])
                 @endif
             </div>
@@ -58,6 +69,7 @@
         $(function() {
             const clientsAutocompleteData = JSON.parse("{!! $clientsAutocompleteData !!}");
             const productsAutocompleteData = JSON.parse("{!! $productsAutocompleteData !!}");
+            const sellersAutocompleteData = JSON.parse("{!! $sellersAutocompleteData !!}");
 
             $("#client").autocomplete({
                 source: clientsAutocompleteData
@@ -65,6 +77,10 @@
 
             $("#product").autocomplete({
                 source: productsAutocompleteData
+            });
+
+            $("#seller").autocomplete({
+                source: sellersAutocompleteData
             });
         });
     </script>

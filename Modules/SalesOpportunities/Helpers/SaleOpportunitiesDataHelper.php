@@ -4,19 +4,23 @@ namespace Modules\SalesOpportunities\Helpers;
 
 use Modules\Products\Contracts\Services\ProductServiceInterface;
 use Modules\Clients\Contracts\Services\ClientServiceInterface;
+use Modules\Sellers\Contracts\Services\SellerServiceInterface;
 
 class SaleOpportunitiesDataHelper
 {
     private $clientService;
     private $productService;
+    private $sellerService;
 
     public function __construct(
         ClientServiceInterface $clientService,
-        ProductServiceInterface $productService
+        ProductServiceInterface $productService,
+        SellerServiceInterface $sellerService
     )
     {
         $this->clientService = $clientService;
         $this->productService = $productService;
+        $this->sellerService = $sellerService;
     }
 
     public function buildClientsObjectToAutocomplete(): string
@@ -39,5 +43,16 @@ class SaleOpportunitiesDataHelper
         })->toJson();
 
         return addslashes($products);
+    }
+
+    public function buildSellersObjectToAutocomplete(): string
+    {
+        $sellers = $this->sellerService->getAllSellers();
+
+        $sellers->transform(function ($seller) {
+            return $seller->name;
+        })->toJson();
+
+        return addslashes($sellers);
     }
 }

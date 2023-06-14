@@ -3,7 +3,7 @@
 @section('title', 'Oportunidades de Venda')
 
 @section('content')
-    <div class="col-md-6 mt-3">
+    <div class="col-md-9 mt-3">
         <h1 class="text-center">Oportunidades de Venda</h1>
 
         <div class="d-flex justify-content-center my-3">
@@ -24,6 +24,7 @@
                 <th>Título</th>
                 <th>Cliente</th>
                 <th>Produto</th>
+                <th>Vendedor</th>
                 <th>Status</th>
                 <th>Ações</th>
             </tr>
@@ -34,6 +35,7 @@
                     <td>{{$saleOpportunity->title}}</td>
                     <td>{{$saleOpportunity->client->name}}</td>
                     <td>{{$saleOpportunity->product->name}}</td>
+                    <td>{{$saleOpportunity->seller->name}}</td>
                     <td>{{$saleOpportunity->formatted_status}}</td>
                     <td>
                         <a href="{{route('sale_opportunity.approve', ['saleOpportunityId' => $saleOpportunity->id])}}">Aprovar</a>

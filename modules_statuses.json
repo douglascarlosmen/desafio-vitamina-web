@@ -3,5 +3,6 @@
     "User": true,
     "SalesOpportunities": true,
     "Clients": true,
-    "Products": true
+    "Products": true,
+    "Sellers": true
 }
