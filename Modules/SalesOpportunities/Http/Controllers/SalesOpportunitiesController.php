@@ -8,15 +8,20 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Modules\SalesOpportunities\Contracts\Services\SaleOpportunityServiceInterface;
+use Modules\SalesOpportunities\Helpers\SaleOpportunitiesDataHelper;
 use Modules\SalesOpportunities\Http\Requests\SaleOpportunityStoreRequest;
 
 class SalesOpportunitiesController extends Controller
 {
     private $service;
+    private $dataHelper;
 
-    public function __construct(SaleOpportunityServiceInterface $saleOpportunityService)
-    {
+    public function __construct(
+        SaleOpportunityServiceInterface $saleOpportunityService,
+        SaleOpportunitiesDataHelper $saleOpportunitiesDataHelper
+    ) {
         $this->service = $saleOpportunityService;
+        $this->dataHelper = $saleOpportunitiesDataHelper;
     }
 
     /**
@@ -35,7 +40,11 @@ class SalesOpportunitiesController extends Controller
      */
     public function create()
     {
-        return view('salesopportunities::create');
+        $clientsAutocompleteData = $this->dataHelper->buildClientsObjectToAutocomplete();
+
+        return view('salesopportunities::create', [
+            'clientsAutocompleteData' => $clientsAutocompleteData
+        ]);
     }
 
     /**

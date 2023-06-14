@@ -3,15 +3,14 @@
 namespace Modules\SalesOpportunities\Contracts\Services;
 
 use Illuminate\Support\Collection;
-use Modules\SalesOpportunities\Entities\SaleOpportunity;
 
 interface SaleOpportunityServiceInterface
 {
     /**
      * @param array $saleOpportunityData
-     * @return SaleOpportunity
+     * @return void
      */
-    public function saveNewSaleOpportunity(array $saleOpportunityData): SaleOpportunity;
+    public function saveNewSaleOpportunity(array $saleOpportunityData): void;
 
     /**
      * @return Collection

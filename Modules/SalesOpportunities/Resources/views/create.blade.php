@@ -1,11 +1,15 @@
 @extends('layouts.common.main')
 
+@section('css')
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+@endsection
+
 @section('title', 'Nova Oportunidade de Venda')
 
 @section('content')
     <div class="col-md-6">
         <h1 class="text-center">Nova Oportunidade de Venda</h1>
-        <form action="{{route('sale_opportunity.store')}}" method="POST">
+        <form action="{{ route('sale_opportunity.store') }}" method="POST">
             @csrf
 
             <div class="mb-3">
@@ -18,9 +22,33 @@
                 @endif
             </div>
 
+            <div class="mb-3">
+                <label for="client" class="form-label">Cliente</label>
+                <input type="text" name="client" class="form-control awesomplete" id="client" value=""
+                    required>
+                @if ($errors->get('client'))
+                    @include('components.common.input-errors', [
+                        'errors' => $errors->get('client'),
+                    ])
+                @endif
+            </div>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
         </form>
     </div>
+@endsection
+
+@section('javascript')
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            const clientsAutocompleteData = JSON.parse("{!! $clientsAutocompleteData !!}");
+            $("#client").autocomplete({
+                source: clientsAutocompleteData
+            });
+        });
+    </script>
 @endsection

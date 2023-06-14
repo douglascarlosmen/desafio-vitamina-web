@@ -3,22 +3,30 @@
 namespace Modules\SalesOpportunities\Services;
 
 use Illuminate\Support\Collection;
+use Modules\Clients\Contracts\Services\ClientServiceInterface;
 use Modules\SalesOpportunities\Contracts\Repositories\SaleOpportunityRepositoryInterface;
 use Modules\SalesOpportunities\Contracts\Services\SaleOpportunityServiceInterface;
-use Modules\SalesOpportunities\Entities\SaleOpportunity;
 
 class SaleOpportunityService implements SaleOpportunityServiceInterface
 {
     private $repository;
+    private $clientService;
 
-    public function __construct(SaleOpportunityRepositoryInterface $saleOpportunityRepository)
+    public function __construct(
+        SaleOpportunityRepositoryInterface $saleOpportunityRepository,
+        ClientServiceInterface $clientService
+    )
     {
         $this->repository = $saleOpportunityRepository;
+        $this->clientService = $clientService;
     }
 
-    public function saveNewSaleOpportunity(array $saleOpportunityData): SaleOpportunity
+    public function saveNewSaleOpportunity(array $saleOpportunityData): void
     {
-        return $this->repository->store($saleOpportunityData);
+        $saleOpportunityData['client_id'] = $this->clientService->getClientIdToLinkToSaleOpportunity($saleOpportunityData['client']);
+        unset($saleOpportunityData['client']);
+
+        $this->repository->store($saleOpportunityData);
     }
 
     public function getAllSalesOpportunities(): Collection

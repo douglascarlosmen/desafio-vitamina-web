@@ -22,6 +22,7 @@
             <tr>
                 <th>#</th>
                 <th>Título</th>
+                <th>Cliente</th>
                 <th>Status</th>
                 <th>Ações</th>
             </tr>
@@ -30,6 +31,7 @@
                 <tr>
                     <td>{{$saleOpportunity->id}}</td>
                     <td>{{$saleOpportunity->title}}</td>
+                    <td>{{$saleOpportunity->client->name}}</td>
                     <td>{{$saleOpportunity->formatted_status}}</td>
                     <td>
                         <a href="{{route('sale_opportunity.approve', ['saleOpportunityId' => $saleOpportunity->id])}}">Aprovar</a>

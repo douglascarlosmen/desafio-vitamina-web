@@ -4,6 +4,7 @@ namespace Modules\SalesOpportunities\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Clients\Entities\Client;
 
 class SaleOpportunity extends Model
 {
@@ -11,7 +12,19 @@ class SaleOpportunity extends Model
 
     protected $table = 'sales_opportunities';
 
-    protected $fillable = ['title', 'status'];
+    protected $fillable = [
+        'title',
+        'status',
+        'client_id'
+    ];
+
+    /**
+     * Relationships
+     */
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id');
+    }
 
     /**
      * Accessors
