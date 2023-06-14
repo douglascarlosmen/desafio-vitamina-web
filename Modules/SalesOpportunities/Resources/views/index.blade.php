@@ -38,9 +38,13 @@
                     <td>{{$saleOpportunity->seller->name}}</td>
                     <td>{{$saleOpportunity->formatted_status}}</td>
                     <td>
-                        <a href="{{route('sale_opportunity.approve', ['saleOpportunityId' => $saleOpportunity->id])}}">Aprovar</a>
-                        |
-                        <a href="{{route('sale_opportunity.refuse', ['saleOpportunityId' => $saleOpportunity->id])}}">Reprovar</a>
+                        @if($saleOpportunity->status != 'approved')
+                            <a href="{{route('sale_opportunity.approve', ['saleOpportunityId' => $saleOpportunity->id])}}">Aprovar</a>
+                        @endif
+
+                        @if($saleOpportunity->status != 'refused')
+                            <a href="{{route('sale_opportunity.refuse', ['saleOpportunityId' => $saleOpportunity->id])}}">Reprovar</a>
+                        @endif
                     </td>
                 </tr>
             @endforeach
