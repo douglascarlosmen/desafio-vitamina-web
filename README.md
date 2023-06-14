@@ -9,9 +9,9 @@ Painel web para gestão de oportunidades de venda, onde é possível cadastrar u
 Existe uma API para obter a lista de oportunidades de venda, com as mesmas opções de filtros supracitadas.
 
 ## Versões utilizadas para rodar a aplicação
-PHP     | Laravel   |Composer   |Sail   |Mysql  |Redis  |Docker   | Bootstrap
-|-      | -         |-          |-      |-      |-      |-        |-
-8.2.4   | 10.10     |2.5.7      |1.18   |8.0.1  |7.0.11 |20.10.21 | 5.3.0
+PHP     | Laravel   |Composer   |Sail   |Mysql  |Docker   | Bootstrap
+|-      | -         |-          |-      |-      |-        |-
+8.2.4   | 10.10     |2.5.7      |1.18   |8.0.1  |20.10.21 | 5.3.0
 
 ## Sobre da aplicação
 + O ambiente de desenvolvimento foi criado com a utilização do [Laravel Sail](https://laravel.com/docs/10.x/sail)
