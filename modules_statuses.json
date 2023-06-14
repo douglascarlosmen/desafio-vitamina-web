@@ -4,5 +4,6 @@
     "SalesOpportunities": true,
     "Clients": true,
     "Products": true,
-    "Sellers": true
+    "Sellers": true,
+    "Api": true
 }

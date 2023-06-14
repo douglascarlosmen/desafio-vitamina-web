@@ -1,25 +1,21 @@
 <?php
 
-namespace Modules\User\Providers;
+namespace Modules\Api\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-use Modules\User\Contracts\Repositories\UserRepositoryInterface;
-use Modules\User\Contracts\Services\UserServiceInterface;
-use Modules\User\Repositories\UserRepository;
-use Modules\User\Services\UserService;
 
-class UserServiceProvider extends ServiceProvider
+class ApiServiceProvider extends ServiceProvider
 {
     /**
      * @var string $moduleName
      */
-    protected $moduleName = 'User';
+    protected $moduleName = 'Api';
 
     /**
      * @var string $moduleNameLower
      */
-    protected $moduleNameLower = 'user';
+    protected $moduleNameLower = 'api';
 
     /**
      * Boot the application events.
@@ -42,8 +38,6 @@ class UserServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-        $this->app->bind(UserServiceInterface::class, UserService::class);
-        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
     }
 
     /**
