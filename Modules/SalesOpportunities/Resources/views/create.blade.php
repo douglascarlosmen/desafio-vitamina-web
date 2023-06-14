@@ -33,6 +33,17 @@
                 @endif
             </div>
 
+            <div class="mb-3">
+                <label for="product" class="form-label">Produto</label>
+                <input type="text" name="product" class="form-control awesomplete" id="product" value=""
+                    required>
+                @if ($errors->get('product'))
+                    @include('components.common.input-errors', [
+                        'errors' => $errors->get('product'),
+                    ])
+                @endif
+            </div>
+
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
@@ -46,8 +57,14 @@
     <script>
         $(function() {
             const clientsAutocompleteData = JSON.parse("{!! $clientsAutocompleteData !!}");
+            const productsAutocompleteData = JSON.parse("{!! $productsAutocompleteData !!}");
+
             $("#client").autocomplete({
                 source: clientsAutocompleteData
+            });
+
+            $("#product").autocomplete({
+                source: productsAutocompleteData
             });
         });
     </script>

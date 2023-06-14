@@ -2,5 +2,6 @@
     "Auth": true,
     "User": true,
     "SalesOpportunities": true,
-    "Clients": true
+    "Clients": true,
+    "Products": true
 }

@@ -41,9 +41,11 @@ class SalesOpportunitiesController extends Controller
     public function create()
     {
         $clientsAutocompleteData = $this->dataHelper->buildClientsObjectToAutocomplete();
+        $productsAutocompleteData = $this->dataHelper->buildProductsObjectToAutocomplete();
 
         return view('salesopportunities::create', [
-            'clientsAutocompleteData' => $clientsAutocompleteData
+            'clientsAutocompleteData' => $clientsAutocompleteData,
+            'productsAutocompleteData' => $productsAutocompleteData
         ]);
     }
 
