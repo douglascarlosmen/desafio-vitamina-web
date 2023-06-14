@@ -14,9 +14,10 @@ interface SaleOpportunityRepositoryInterface
     public function store(array $data): SaleOpportunity;
 
     /**
+     * @param array $filters
      * @return Collection
      */
-    public function getAll(): Collection;
+    public function getAll(array $filters): Collection;
 
     /**
      * @param array $data

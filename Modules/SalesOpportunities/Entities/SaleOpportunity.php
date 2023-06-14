@@ -2,11 +2,14 @@
 
 namespace Modules\SalesOpportunities\Entities;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Modules\Clients\Entities\Client;
 use Modules\Products\Entities\Product;
 use Modules\Sellers\Entities\Seller;
+use Illuminate\Database\Eloquent\Builder;
+use Modules\SalesOpportunities\Helpers\FormatHelper;
 
 class SaleOpportunity extends Model
 {
@@ -57,6 +60,20 @@ class SaleOpportunity extends Model
         }
 
         return $status;
+    }
+
+    /**
+     * Scopes
+     */
+    public function scopeFilters(Builder $query, array $filters)
+    {
+        return $query->when((isset($filters['date_filter']) && !empty($filters['date_filter'])), function ($q) use ($filters) {
+            $carbonDatesArray = FormatHelper::daterangepickerStringToCarbonDates($filters['date_filter']);
+            return $q->whereBetween('created_at', $carbonDatesArray);
+        })
+        ->when((isset($filters['seller_filter']) && !empty($filters['seller_filter'])), function ($q) use ($filters) {
+            return $q->where('seller_id', $filters['seller_filter']);
+        });
     }
 
     /**

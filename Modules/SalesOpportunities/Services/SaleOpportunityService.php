@@ -34,15 +34,15 @@ class SaleOpportunityService implements SaleOpportunityServiceInterface
         $saleOpportunityData['client_id'] = $this->clientService->getClientIdToLinkToSaleOpportunity($saleOpportunityData['client']);
         $saleOpportunityData['product_id'] = $this->productService->getProductIdToLinkToSaleOpportunity($saleOpportunityData['product']);
         $saleOpportunityData['seller_id'] = $this->sellerService->getSellerIdToLinkToSaleOpportunity($saleOpportunityData['seller']);
-        
+
         unset($saleOpportunityData['client'], $saleOpportunityData['product'], $saleOpportunityData['seller']);
 
         $this->repository->store($saleOpportunityData);
     }
 
-    public function getAllSalesOpportunities(): Collection
+    public function getAllSalesOpportunities(array $filters): Collection
     {
-        return $this->repository->getAll();
+        return $this->repository->getAll($filters);
     }
 
     public function changeSaleOpportunityStatus(int $saleOpportunityId, string $newStatus): void

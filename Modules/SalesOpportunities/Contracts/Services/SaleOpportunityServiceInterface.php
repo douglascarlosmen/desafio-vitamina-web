@@ -13,9 +13,10 @@ interface SaleOpportunityServiceInterface
     public function saveNewSaleOpportunity(array $saleOpportunityData): void;
 
     /**
+     * @param array $filters
      * @return Collection
      */
-    public function getAllSalesOpportunities(): Collection;
+    public function getAllSalesOpportunities(array $filters): Collection;
 
     /**
      * @param string $newStatus

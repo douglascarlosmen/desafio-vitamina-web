@@ -28,10 +28,17 @@ class SalesOpportunitiesController extends Controller
      * Display a listing of the resource.
      * @return Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $salesOpportunities = $this->service->getAllSalesOpportunities();
-        return view('salesopportunities::index', ['salesOpportunities' => $salesOpportunities]);
+        $salesOpportunities = $this->service->getAllSalesOpportunities($request->all());
+        $sellers = $this->dataHelper->sellersObjectToSelectFilter();
+
+        return view('salesopportunities::index', [
+            'salesOpportunities' => $salesOpportunities,
+            'sellers' => $sellers,
+            'date_filter' => $request->date_filter,
+            'seller_filter' => $request->seller_filter
+        ]);
     }
 
     /**

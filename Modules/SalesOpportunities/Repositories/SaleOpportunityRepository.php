@@ -20,9 +20,9 @@ class SaleOpportunityRepository implements SaleOpportunityRepositoryInterface
         return $this->model->create($data);
     }
 
-    public function getAll(): Collection
+    public function getAll(array $filters): Collection
     {
-        return $this->model->all();
+        return $this->model->filters($filters)->get();
     }
 
     public function update(int $id, array $data): void

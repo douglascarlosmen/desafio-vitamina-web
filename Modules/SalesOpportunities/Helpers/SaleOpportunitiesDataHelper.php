@@ -2,6 +2,7 @@
 
 namespace Modules\SalesOpportunities\Helpers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Products\Contracts\Services\ProductServiceInterface;
 use Modules\Clients\Contracts\Services\ClientServiceInterface;
 use Modules\Sellers\Contracts\Services\SellerServiceInterface;
@@ -54,5 +55,10 @@ class SaleOpportunitiesDataHelper
         })->toJson();
 
         return addslashes($sellers);
+    }
+
+    public function sellersObjectToSelectFilter(): Collection
+    {
+        return $this->sellerService->getAllSellers();
     }
 }
