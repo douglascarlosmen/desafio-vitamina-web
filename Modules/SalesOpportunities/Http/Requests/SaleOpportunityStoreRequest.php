@@ -14,7 +14,10 @@ class SaleOpportunityStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|max:255'
+            'title' => 'required|string|max:255',
+            'client' => 'required|string|max:255',
+            'product' => 'required|string|max:255',
+            'seller' => 'required|string|max:255'
         ];
     }
 
