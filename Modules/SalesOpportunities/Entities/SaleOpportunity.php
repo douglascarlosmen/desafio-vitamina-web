@@ -58,4 +58,23 @@ class SaleOpportunity extends Model
 
         return $status;
     }
+
+    /**
+     * Functions
+     */
+    public function tableRowClass()
+    {
+        switch ($this->status) {
+            case 'approved':
+                $class = 'table-success';
+                break;
+            case 'refused':
+                $class = 'table-danger';
+                break;
+            default:
+                $class = 'table-warning';
+        }
+
+        return $class;
+    }
 }

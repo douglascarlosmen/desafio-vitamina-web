@@ -30,7 +30,7 @@
             </tr>
 
             @foreach ($salesOpportunities as $saleOpportunity)
-                <tr>
+                <tr class="{{$saleOpportunity->tableRowClass()}}">
                     <td>{{$saleOpportunity->id}}</td>
                     <td>{{$saleOpportunity->title}}</td>
                     <td>{{$saleOpportunity->client->name}}</td>
